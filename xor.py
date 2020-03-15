@@ -1,8 +1,29 @@
 #This is a test program
 
-hex_str = "1c0111001f010100061a024b53535009181c"
 
-decoded = hex_str.decode("hex")
-test = decoded.encode("hex")
-print (decoded)
-print(test)
+
+def xorOperation(string, xor_key):
+    res = bytearray(len(string))
+    
+    for i in range(0, len(string)):
+        res[i] = string[i]^xor_key[i]
+    return res
+
+
+hex_str = raw_input("Enter string 1 : ")
+xor_str = raw_input("Enter string 2 : ")
+
+string = bytearray.fromhex(hex_str)
+xor_key = bytearray.fromhex(xor_str)
+
+print (string)
+print (xor_key)
+
+
+ 
+res = bytes(xorOperation(string, xor_key))
+output = res.encode("hex")
+print(res)
+
+print (output)
+
